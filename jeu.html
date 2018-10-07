@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jeu</title>
+</head>
+<body>
+    <h1 class="title">Les animaux</h1>
+    <div id="jeu">
+        <p class="table">
+            <transition-group name="table" mode="out-in" appear>
+                <span class="vign" v-for="v,i in liste" :key="i" @click="choisir(i)">
+                    <img src="i/9.png" v-show="v != table[i]">
+                    <img :src="'i/'+v+'.png'" v-show="v == table[i]">
+                </span>
+            </transition-group>
+        </p>
+        <p class="essai">
+            Essai : {{ essai }}
+        </p>
+        <div v-if="compteur==0">
+            <h1 class="gagne">Gagné !</h1>
+            <button @click="melanger">Recommencer</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script src="jeu.js"></script>
+    <style>
+        * {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        .table {max-width: 512px;display: inline-block;}
+        .table .vign {width:25%;display: inline-block;}
+        .table .vign img {width:100%}
+        .table-enter-active, .table-leave-active {
+          transition: all 2s ease;
+        }
+        .table-enter, .table-leave-to {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</body>
+</html>
