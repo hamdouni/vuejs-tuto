@@ -10,9 +10,9 @@
     <h1 class="title">Les animaux</h1>
     <div id="jeu">
         <p class="table">
-            <span class="vign" v-for="v,k in liste" :key="k" @click="choisir(k)">
-                <img src="i/9.png" :class="v != table[k] ? 'retourne':'cache'">
-                <img :src="'i/'+v+'.png'" :class="v == table[k] ? 'retourne':'cache'">
+            <span class="vign" v-for="v,k in table" :key="k" @click="choisir(k)">
+                <img src="i/9.png"        :class="v == liste[k] ? 'pile':'face'">
+                <img :src="'i/'+v+'.png'" :class="v != liste[k] ? 'pile':'face'">
             </span>
         </p>
         <p class="essai">
@@ -20,7 +20,7 @@
         </p>
         <div v-if="compteur==0">
             <h1 class="gagne">Gagné !</h1>
-            <button @click="melanger">Recommencer</button>
+            <button @click="recommencer">Recommencer</button>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
@@ -33,8 +33,8 @@
         }
         .table {max-width: 512px;display: inline-block;}
         .table .vign {width:25%;display: inline-table;}
-        .table .vign img.retourne {width:100%;height:100%;}
-        .table .vign img.cache {width:0px;height:0px; transform: rotate(180deg);}
+        .table .vign img.face {width:100%;height:100%;}
+        .table .vign img.pile {width:0px;height:0px; transform: rotate(180deg);}
         .table .vign img {transition: all 0.5s ease;}
     </style>
 </body>

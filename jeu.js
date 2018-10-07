@@ -15,7 +15,6 @@ function initTable(arr) {
     for (let i = 0; i < l; i++) {
         arr.push(9)
     }
-    console.log(arr)
 }
 
 new Vue({
@@ -31,7 +30,7 @@ new Vue({
         this.melanger()
     },
     methods: {
-        melanger: function() {
+        recommencer: function() {
             shuffle(this.liste)
             initTable(this.table)
             this.compteur = 8
