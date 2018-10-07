@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <title>VueJS Tuto</title>
+</head>
+<body>
+    <div id="app" class="ui main text container">
+        <p>
+            <input type="checkbox" v-model="etat">
+        </p>
+        <p class="ui message" :class="etat ? 'success':'error'">
+            {{ message }} : <a :href="link">goto</a>
+            <ul v-if="visible">
+                <li v-for="p,i in persons">
+                    <a href="#" @click="remove(i)"><i class="icon window close"></i> {{ p }}</a> 
+                </li>
+            </ul>
+        </p>
+        <button @click="bascule">bascule</button>
+        <button @click="reverse">reverse</button>
+        <p>
+            message : <input type="text" v-model="message">
+        </p>
+        <p>
+            link : <input type="text" v-model="link">
+        </p>
+        <p>
+            ajoute une personne : <input type="text" v-model="persontoadd" v-on:keyup.enter="addperson">
+        </p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
